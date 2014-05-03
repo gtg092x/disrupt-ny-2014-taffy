@@ -18,6 +18,11 @@
   "homepage": "https://github.com/gtg092x/disrupt-ny-2014-taffy",
   "dependencies": {
     "async": "~0.8.0",
-    "gulp": "~3.6.2"
+    "gulp": "~3.6.2",
+    "restify": "~2.7.0",
+    "require-directory": "~1.2.0",
+    "lodash": "~2.4.1",
+    "request": "~2.34.0",
+    "xml2js": "~0.4.2"
   }
 }

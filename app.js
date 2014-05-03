@@ -1,16 +1,24 @@
-/**
- * Created by matt on 5/3/14.
- */
-var http = require('http');
+var restify = require('restify'),_=require('lodash');
+var serverInfo = {
+    name: 'globetrotter',
+    version: '1.0.0'
+};
+var server = restify.createServer(serverInfo);
+server.use(restify.acceptParser(server.acceptable));
+server.use(restify.queryParser());
+server.use(restify.jsonp());
+server.use(restify.bodyParser());
 
-// Configure our HTTP server to respond with Hello World to all requests.
-var server = http.createServer(function (request, response) {
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello Guys\n");
+server.get('/', function (req, res, next) {
+    res.send(serverInfo);
+    return next();
 });
 
-// Listen on port 8000, IP defaults to 127.0.0.1
-server.listen(80);
+var routes = require('./routes');
+_.forIn(routes,function(module){
+    module(server);
+});
 
-// Put a friendly message on the terminal
-console.log("Server running at http://127.0.0.1:8000/");
+server.listen(process.env.PORT||8001, function () {
+    console.log('%s listening at %s', server.name, server.url);
+});
