@@ -23,6 +23,7 @@
     "require-directory": "~1.2.0",
     "lodash": "~2.4.1",
     "request": "~2.34.0",
-    "xml2js": "~0.4.2"
+    "xml2js": "~0.4.2",
+    "terraformer-arcgis-parser": "~1.0.3"
   }
 }

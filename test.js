@@ -1,4 +1,10 @@
 var consumers = require('./consumers');
-consumers.concur.itinerary(function(err,data){
+consumers.concur.trips(function(err,data){
 console.log(data);
+    data.forEach(function(d){console.log(JSON.stringify(d,null,4));});
 });
+
+/*consumers.esri.geocode({text:"SFO"},function(err,result){
+    console.log(result);
+    console.log(JSON.stringify(result,null,4));
+});*/

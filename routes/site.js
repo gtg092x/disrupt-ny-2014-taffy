@@ -1,17 +1,34 @@
 var assert = require('assert');
-
-function wrap(obj){
-    return {data:obj};
+var qs = require('querystring');
+var _ = require('lodash');
+function wrap(obj) {
+    return {data: obj};
 };
-
-module.exports = function(server) {
+var consumers = require('../consumers');
+module.exports = function (server) {
     /*
      * Brands
      */
-    server.get('/hello', function(req, res, next) {
+    server.get('/trips-summary', function (req, res, next) {
+        consumers.concur.trips(req.params, function (err,trips) {
+            assert.ifError(err);
+            var result= trips.map(function(t){
 
-            //assert.ifError(err);
-            res.send(wrap(["world"]));
+                return _.merge(t.Bookings.Booking.map(function(b){
+                    return b.Segments;
+                }),{TripId: t.TripId,TripName: t.TripName});
+            });
+            res.send(wrap(result));
             return next();
         });
+
+    });
+    server.get('/trips', function (req, res, next) {
+        consumers.concur.trips(req.params, function (err,trips) {
+            assert.ifError(err);
+            res.send(wrap(trips));
+            return next();
+        });
+
+    });
 };
