@@ -10,24 +10,29 @@ module.exports = function (server) {
      * Brands
      */
     server.get('/trips-summary', function (req, res, next) {
-        consumers.concur.trips(req.params, function (err,trips) {
-            assert.ifError(err);
-            var result= trips.map(function(t){
+        consumers.concur.trips(req.params, function (err, trips) {
+            consumers.aggregate.geocodeAll(trips, function (err, trips) {
+                assert.ifError(err);
+                var result = trips.map(function (t) {
 
-                return _.merge(t.Bookings.Booking.map(function(b){
-                    return b.Segments;
-                }),{TripId: t.TripId,TripName: t.TripName});
+                    return _.merge(t.Bookings.Booking.map(function (b) {
+                        return b.Segments;
+                    }), {TripId: t.TripId, TripName: t.TripName});
+                });
+                res.send(wrap(result));
+                return next();
             });
-            res.send(wrap(result));
-            return next();
         });
 
     });
     server.get('/trips', function (req, res, next) {
-        consumers.concur.trips(req.params, function (err,trips) {
-            assert.ifError(err);
-            res.send(wrap(trips));
-            return next();
+        consumers.concur.trips(req.params, function (err, trips) {
+            consumers.aggregate.geocodeAll(trips, function (err, trips) {
+                assert.ifError(err);
+                res.send(wrap(trips));
+                return next();
+            });
+
         });
 
     });

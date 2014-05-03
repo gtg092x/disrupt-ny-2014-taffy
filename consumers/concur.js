@@ -6,7 +6,7 @@ var _ = require('lodash');
 var xml2js = require('xml2js');
 
 var parser = new xml2js.Parser({explicitArray: false, normalize: true, explicitRoot: false});
-var esri = require('./esri');
+//var esri = require('./esri');
 var util = require('util');
 var normalizeArray = function (o) {
     if (!util.isArray(o))
@@ -81,44 +81,16 @@ var consumer = {
                     });
                 }
 
-                consumer.geocode(result, function () {
+                //consumer.geocode(result, function () {
                     cb(err, result ? result : null);
-                });
+                //});
 
             });
 
 
         });
-    },
-    geocode: function (trip, cb) {
-        if (!trip || !trip.Bookings)
-            return cb(null, null);
-
-        trip.Bookings.Booking=trip.Bookings.Booking||[];
-        async.each(trip.Bookings.Booking, function (booking, cb) {
-
-            booking.Segments=booking.Segments||{};
-            async.each(Object.keys(booking.Segments), function (segmentId, cb) {
-                booking.Segments[segmentId] = booking.Segments[segmentId]||[];
-                async.each(booking.Segments[segmentId], function (leg, cb) {
-
-                    esri.geocode({text: leg.StartCityCode}, function (err, geo) {
-                        leg.StartLocations = geo ? geo.locations : null;
-                        esri.geocode({text: leg.EndCityCode}, function (err, geo) {
-                            leg.EndLocations = geo ? geo.locations : null;
-
-                            cb(err);
-                        });
-                    })
-                }, cb);
-
-            }, cb);
-        }, function (err) {
-
-            cb(err, trip);
-        });
-
     }
+
 
 }
 
