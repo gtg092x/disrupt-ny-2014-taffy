@@ -11,3 +11,6 @@
 /*.userprefs
 /*.pidb
 /*.booproj
+
+bower_components
+node_modules

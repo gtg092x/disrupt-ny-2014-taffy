@@ -1,0 +1,19 @@
+{
+  "name": "disrupt-ny-2014-taffy",
+  "version": "0.0.0",
+  "homepage": "https://github.com/gtg092x/disrupt-ny-2014-taffy",
+  "authors": [
+    "gtg092x <mdrake@mediadrake.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "async": "~0.8.0"
+  }
+}

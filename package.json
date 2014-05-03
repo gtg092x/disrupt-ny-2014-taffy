@@ -1,0 +1,22 @@
+{
+  "name": "disrupt-ny-2014-taffy",
+  "version": "0.0.0",
+  "description": "disrupt-ny-2014-taffy =====================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gtg092x/disrupt-ny-2014-taffy"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gtg092x/disrupt-ny-2014-taffy/issues"
+  },
+  "homepage": "https://github.com/gtg092x/disrupt-ny-2014-taffy",
+  "dependencies": {
+    "async": "~0.8.0"
+  }
+}
