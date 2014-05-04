@@ -48,9 +48,9 @@ var consumer = {
         var startCity = leg.StartCityCode;
         var endCity = leg.EndCityCode;
         weather.plan({day:start,city:startCity},function(err,data){
-            leg.StartWeather=data.trip;
+            leg.StartWeather=data?data.trip:null;
             weather.plan({day:end,city:endCity},function(err,data){
-                leg.EndWeather=data.trip;
+                leg.EndWeather=data?data.trip:null;
                 cb(err,leg);
             });
         });
