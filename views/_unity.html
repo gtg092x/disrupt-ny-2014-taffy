@@ -25,7 +25,8 @@
 
     jQuery(document).bind("unity_start",function() {
 
-
+        var $missingScreen = jQuery("#unityPlayer").find(".missing");
+        var $brokenScreen = jQuery("#unityPlayer").find(".broken");
 
         u.observeProgress(function (progress) {
             switch(progress.pluginStatus) {
@@ -54,6 +55,9 @@
                     break;
             }
         });
+        $('html, body').animate({
+            scrollTop: $("#unityPlayer").offset().top
+        }, 2000);
         u.initPlugin(jQuery("#unityPlayer")[0], "/media/app/app.unity3d");
     });
     -->

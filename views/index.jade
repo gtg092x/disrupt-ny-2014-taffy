@@ -4,12 +4,15 @@ block body
         div.row
             div.col-sm-6
                 h1 Globe Trotter
-                p See a 3D visualization of all your expense reports as they happen.
+                p See a 3D visualization of all your expense reports as they happen. <span class='blue'>blue</span> planes are planes that have a hotel and car itinerary associated with them. <span class='red'>Red</span> planes are "cheaper" because they have less segments tied to them.
         div.row
             div.col-sm-6
                 h2 Instructions
                 p Click and drag! Use your mouse wheel to zoom in and out.
                     button#get_started(type='button').btn.btn-primary Let's Get Started
+    div.container
+        div.row
+            div.col-xs-12#status
     div.container#unity_container
         div.row
             div.col-xs-12
@@ -20,5 +23,10 @@ block body
                     div.broken
                         a(href="http://unity3d.com/webplayer/",title="Unity Web Player. Install now! Restart your browser after install.")
                             img(alt="Unity Web Player. Install now! Restart your browser after install.",src="http://webplayer.unity3d.com/installation/getunityrestart.png",width="193",height="63")
+    div.container#credits
+        div.row
+            div.col-xs-12
+                h3 Think This is awesome?
+                p So do we! Chat us up at <a href='mailto:mdrake@mediadrake.com'>mdrake@mediadrake.com</a> and <a href='mailto:carson28@gmail.com'>carson28@gmail.com</a>.
 block script
     include _unity.html
