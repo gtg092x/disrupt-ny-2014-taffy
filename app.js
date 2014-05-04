@@ -14,6 +14,10 @@ server.get('/', function (req, res, next) {
     return next();
 });
 
+server.get(/.*/, restify.serveStatic({
+    directory: './public'
+}));
+
 var routes = require('./routes');
 _.forIn(routes,function(module){
     module(server);

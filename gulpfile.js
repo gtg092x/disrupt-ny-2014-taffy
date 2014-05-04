@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-gulp.task('build',['styles','scripts','media']);
+gulp.task('build',['styles','scripts','media','policy']);
 
 gulp.task('default', function (cb) {
 
@@ -53,6 +53,15 @@ gulp.task('shiv', function() {
         //.pipe(rename('all.min.js'))
 
         .pipe(gulp.dest(path.join(__dirname,'public/script')));
+});
+
+gulp.task('policy', function() {
+
+
+
+    return gulp.src(path.join(__dirname,'www/*.xml'))
+
+        .pipe(gulp.dest(path.join(__dirname,'public')));
 });
 
 gulp.task('media', function() {
