@@ -13,7 +13,8 @@ csv()
         //2 - city name
         //4 - city code
         data.forEach(function(data){
-            result.push({name:data[2],code:data[4]});
+            if(data[4]&&data[3]=="United States")
+            result.push({name:data[2],code:data[4],country:data[3]});
         });
 
         fs.writeFile(__dirname+'/data/city-codes.json',JSON.stringify(result,null,4),'utf8',function(err){
