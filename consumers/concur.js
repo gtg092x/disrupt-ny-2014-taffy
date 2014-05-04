@@ -66,7 +66,7 @@ var consumer = {
         });
     },
     stuff:function(segments){
-        for(var i = 0;i<100;i++){
+        for(var i = 0;i<10;i++){
             var b = _.cloneDeep(_.sample(segments,1)[0]);
             b.StartCityCode = _.sample(citySamples,1)[0].code;
             b.EndCityCode = _.sample(citySamples,1)[0].code;

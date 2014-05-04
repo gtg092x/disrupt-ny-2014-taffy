@@ -26,7 +26,7 @@ module.exports = function (server) {
                         return b.Segments;
                     }), {TripId: t.TripId, TripName: t.TripName});
                 });
-                cache.put(requestHash,result,1000*60);
+                cache.put(requestHash,result,1000*60*30);
                 res.send(wrap(result));
                 return next();
             });
