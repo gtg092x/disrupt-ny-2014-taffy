@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 var esri = require('./esri');
 var concur = require('./concur');
-
+var weather = require('./weather');
 
 
 var consumer = {
@@ -29,8 +29,8 @@ var consumer = {
                         leg.StartLocations = geo ? geo.locations : null;
                         esri.geocode({text: leg.EndCityCode}, function (err, geo) {
                             leg.EndLocations = geo ? geo.locations : null;
-
-                            cb(err);
+                            consumer.weatherLeg(leg,cb);
+                            //cb(err);
                         });
                     })
                 }, cb);
@@ -41,6 +41,19 @@ var consumer = {
             cb(err, trip);
         });
 
+    },
+    weatherLeg:function(leg,cb){
+        var start =new Date( Date.parse(leg.StartDateUtc));
+        var end = new Date( Date.parse(leg.EndDateUtc));
+        var startCity = leg.StartCityCode;
+        var endCity = leg.EndCityCode;
+        weather.plan({day:start,city:startCity},function(err,data){
+            leg.StartWeather=data;
+            weather.plan({day:end,city:endCity},function(err,data){
+                leg.EndWeather=data;
+                cb(err,leg);
+            });
+        });
     }
 }
 
