@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        <!--[if lt IE 9]><script type="text/javascript" src="/script/html5shiv.js" /><![endif]-->
+        title Globe Trotter
+        // Viewport mobile tag for sensible mobile support
+        meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
+        link(href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700,300italic,400italic,700italic',rel='stylesheet',type='text/css')
+        //link(rel="icon",type="image/x-icon",href="/favicon.ico")
+        link(href='/style/site.css', rel='stylesheet')
+        block meta
+        body
+            header
+                //nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+        div.main
+            block body
+        footer
+            div.container
+        // A few optional dependencies, linked in order
+        script(type="text/javascript",src="/script/all.js")
+        block script
+        // Sails sockets - in concat
+        //script(type="text/javascript", src="/linker/js/socket.io.js")
+        //script(type="text/javascript", src="/linker/js/sails.io.js")

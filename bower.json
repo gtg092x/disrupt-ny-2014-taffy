@@ -14,6 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "async": "~0.8.0"
+    "async": "~0.8.0",
+    "bootstrap": "~3.1.1",
+    "html5shiv": "~3.7.2"
   }
 }
