@@ -1,5 +1,5 @@
 $("#credits").hide();
-$("#unityPlayer").hide();
+
 var acted=false;
 $("#get_started").click(function(){
     $("#get_started").fadeOut();
@@ -38,3 +38,10 @@ $("#get_started").click(function(){
 
 
 });
+if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    $("#unityPlayer .mobile").hide();
+    $("#unityPlayer").hide();
+}else{
+    $("#unityPlayer .broken").hide();
+    $("#unityPlayer .missing").hide();
+}
