@@ -11,7 +11,8 @@ module.exports = function (server) {
      * Brands
      */
     server.get('/trips-summary', function (req, res, next) {
-        var requestHash='/trips-summary'+JSON.stringify(req.params);
+
+        var requestHash='/trips-summary';
         var cached = cache.get(requestHash);
         if(cached){
             res.send(wrap(cached))

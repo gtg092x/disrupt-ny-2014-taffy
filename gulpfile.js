@@ -91,4 +91,5 @@ gulp.task('styles', ['less'],function() {
 
 gulp.task('watch', function () {
     gulp.watch(path.join(__dirname,'www/**/*.less'), ['styles']);
+    gulp.watch(path.join(__dirname,'www/**/*.js'), ['scripts']);
 });

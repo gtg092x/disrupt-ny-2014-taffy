@@ -1,3 +1,24 @@
 extends _layout
 block body
-    h1 Hello World
+    div.container
+        div.row
+            div.col-sm-6
+                h1 Globe Trotter
+                p See a 3D visualization of all your expense reports as they happen.
+        div.row
+            div.col-sm-6
+                h2 Instructions
+                p Click and drag! Use your mouse wheel to zoom in and out.
+                    button#get_started(type='button').btn.btn-primary Let's Get Started
+    div.container#unity_container
+        div.row
+            div.col-xs-12
+                #unityPlayer
+                    div.missing
+                        a(href="http://unity3d.com/webplayer/",title="Unity Web Player. Install now!")
+                            img(alt="Unity Web Player. Install now!",src="http://webplayer.unity3d.com/installation/getunity.png",width="193",height="63")
+                    div.broken
+                        a(href="http://unity3d.com/webplayer/",title="Unity Web Player. Install now! Restart your browser after install.")
+                            img(alt="Unity Web Player. Install now! Restart your browser after install.",src="http://webplayer.unity3d.com/installation/getunityrestart.png",width="193",height="63")
+block script
+    include _unity.html
