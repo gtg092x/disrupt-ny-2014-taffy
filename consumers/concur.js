@@ -14,6 +14,9 @@ var normalizeArray = function (o) {
     return o;
 }
 
+var citySamples = JSON.parse(fs.readFileSync(path.join(__dirname,"../data/city-codes.json"),'utf8'));
+
+
 var consumer = {
     trips: function (query, cb) {
         if (!cb) {
@@ -62,6 +65,14 @@ var consumer = {
 
         });
     },
+    stuff:function(segments){
+        for(var i = 0;i<100;i++){
+            var b = _.cloneDeep(_.sample(segments,1)[0]);
+            b.StartCityCode = _.sample(citySamples,1)[0].code;
+            b.EndCityCode = _.sample(citySamples,1)[0].code;
+            segments.push(b);
+        }
+    },
     trip: function (id, cb) {
         request.get({url: 'https://www.concursolutions.com/api/travel/trip/v1.1/' + id,
             headers: {
@@ -73,10 +84,14 @@ var consumer = {
                 var trip = result;
 
                 if (trip && trip.Bookings) {
+
                     trip.Bookings.Booking = normalizeArray(trip.Bookings.Booking);
                     trip.Bookings.Booking.forEach(function (booking) {
                         Object.keys(booking.Segments).forEach(function (key) {
+
                             booking.Segments[key] = normalizeArray(booking.Segments[key]);
+                            if(key=="Air")
+                                consumer.stuff(booking.Segments[key]);
                         });
                     });
                 }
