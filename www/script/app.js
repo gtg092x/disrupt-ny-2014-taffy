@@ -2,6 +2,7 @@ $("#credits").hide();
 $("#unityPlayer").hide();
 var acted=false;
 $("#get_started").click(function(){
+    $("#get_started").fadeOut();
     if(acted)
     return;
     acted=true;
