@@ -4,7 +4,21 @@ block body
         div.row
             div.col-sm-6
                 h1 Globe Trotter
-                p See a 3D visualization of all your expense reports as they happen. <span class='blue'>Blue</span> planes are planes that are on their returning legs (returning to office). <span class='red'>Red</span> planes are planes that are on their outgoing legs (going offsite).
+                p See a 3D visualization of all your expense reports as they happen. 
+
+                ul.list-group
+                    li.list-group-item.row
+                        .col-sm-3
+                            img.plane(src="../media/blue.png")
+                        .col-sm-9
+                            <span class='blue'>Blue</span> planes are planes that are on their returning legs (returning to office). 
+                
+                    li.list-group-item.row
+                        .col-sm-3
+                            img.plane(src="../media/red.png")
+                        .col-sm-9
+                            <span class='red'>Red</span> planes are planes that are on their outgoing legs (going offsite).
+        
         div.row
             div.col-sm-6
                 h2 Instructions

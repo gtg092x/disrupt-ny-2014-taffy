@@ -1,3 +1,37 @@
+
+
+@font-face {
+    font-family: "Clear Sans";
+    src: url("../fonts/ClearSans-Light-webfont.eot");
+    src: url("../fonts/ClearSans-Light-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/ClearSans-Light-webfont.svg#clear_sans_lightregular") format("svg"),
+         url("../fonts/ClearSans-Light-webfont.woff") format("woff");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Clear Sans";
+    src: url("../fonts/ClearSans-Regular-webfont.eot");
+    src: url("../fonts/ClearSans-Regular-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/ClearSans-Regular-webfont.svg#clear_sansregular") format("svg"),
+         url("../fonts/ClearSans-Regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Clear Sans";
+    src: url("../fonts/ClearSans-Bold-webfont.eot");
+    src: url("../fonts/ClearSans-Bold-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/ClearSans-Bold-webfont.svg#clear_sansbold") format("svg"),
+         url("../fonts/ClearSans-Bold-webfont.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+
 html,body{height:100%;}
 #unityPlayer{
   height:80%;
@@ -9,11 +43,30 @@ body{
 
 
 }
+
+.plane{
+	width:60px;
+	height:auto;
+}
 #get_started{
   margin-top:5px;
 }
-h1{font-family:'Ubuntu', 'sans-serif';font-weight:light;}
+
+h1, h2, h3, p, a, button, li, div, span{font-family:'Clear Sans', 'sans-serif';}
+h1,h2,h3{font-weight:bold;}
+
+p, li, span, div{
+	line-height:1.6;
+	font-size:18px;
+}
+
 #status{
   padding-top:20px;
   padding-bottom:20px;
 }
+
+button{
+	border:none;
+	board-radius:2px;
+}
+
