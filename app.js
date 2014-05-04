@@ -14,14 +14,16 @@ server.get('/', function (req, res, next) {
     return next();
 });
 
-server.get(/.*/, restify.serveStatic({
-    directory: './public'
-}));
+
 
 var routes = require('./routes');
 _.forIn(routes,function(module){
     module(server);
 });
+
+server.get(/.*/, restify.serveStatic({
+    directory: './public'
+}));
 
 server.listen(process.env.PORT||8001, function () {
     console.log('%s listening at %s', server.name, server.url);
